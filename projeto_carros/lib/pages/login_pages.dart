@@ -15,11 +15,31 @@ class LoginPage extends StatelessWidget {
       padding: EdgeInsets.all(16),
       child: ListView(
         children: <Widget>[
-          Text("Login"),
-          TextFormField(),
+          TextFormField(
+            style: TextStyle(
+              fontSize: 16,
+              color: Colors.blue[300]
+            ),
+            decoration: InputDecoration(
+                labelText: "Login", 
+                hintText: "Digite seu login",
+                labelStyle: TextStyle(
+                  fontSize: 20,
+                  color: Colors.blue[300]
+                ),  
+              ),
+          ),
           SizedBox(height: 10),
-          Text("Senha"),
-          TextFormField(obscureText: true),
+          TextFormField(
+              decoration: InputDecoration(
+                  labelText: "Senha", 
+                  hintText: "Digite sua senha",
+                  labelStyle: TextStyle(
+                  fontSize: 20,
+                  color: Colors.blue[300]
+                ),  
+                  ),
+              obscureText: true),
           SizedBox(height: 20),
           Container(
             height: 46,
@@ -27,7 +47,7 @@ class LoginPage extends StatelessWidget {
               color: Colors.blue[300],
               child: Text(
                 "Login",
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                style: TextStyle(color: Colors.white, fontSize: 20),
               ),
               onPressed: () {
                 print("login");
