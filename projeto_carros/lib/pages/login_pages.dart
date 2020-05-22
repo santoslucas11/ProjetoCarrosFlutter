@@ -15,46 +15,42 @@ class LoginPage extends StatelessWidget {
       padding: EdgeInsets.all(16),
       child: ListView(
         children: <Widget>[
-          TextFormField(
-            style: TextStyle(
-              fontSize: 16,
-              color: Colors.blue[300]
-            ),
-            decoration: InputDecoration(
-                labelText: "Login", 
-                hintText: "Digite seu login",
-                labelStyle: TextStyle(
-                  fontSize: 20,
-                  color: Colors.blue[300]
-                ),  
-              ),
-          ),
+          _text("Login", "Digite o login"),
           SizedBox(height: 10),
-          TextFormField(
-              decoration: InputDecoration(
-                  labelText: "Senha", 
-                  hintText: "Digite sua senha",
-                  labelStyle: TextStyle(
-                  fontSize: 20,
-                  color: Colors.blue[300]
-                ),  
-                  ),
-              obscureText: true),
+          _text("Senha", "Digite a senha", password: true),
           SizedBox(height: 20),
-          Container(
-            height: 46,
-            child: RaisedButton(
-              color: Colors.blue[300],
-              child: Text(
-                "Login",
-                style: TextStyle(color: Colors.white, fontSize: 20),
-              ),
-              onPressed: () {
-                print("login");
-              },
-            ),
-          )
+          _button("Entrar"),
+          SizedBox(height: 10),
+          _button("Cancelar"),
         ],
+      ),
+    );
+  }
+
+  _button(String text) {
+    return Container(
+      height: 46,
+      child: RaisedButton(
+        color: Colors.blue[300],
+        child: Text(
+          text,
+          style: TextStyle(color: Colors.white, fontSize: 20),
+        ),
+        onPressed: () {
+          print("login");
+        },
+      ),
+    );
+  }
+
+  _text(String label, String hint, {bool password = false}) {
+    return TextFormField(
+      obscureText: password,
+      style: TextStyle(fontSize: 20, color: Colors.blue[300]),
+      decoration: InputDecoration(
+        labelText: label,
+        hintText: hint,
+        labelStyle: TextStyle(fontSize: 20, color: Colors.blue[300]),
       ),
     );
   }

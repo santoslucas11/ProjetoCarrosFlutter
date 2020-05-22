@@ -13,7 +13,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         brightness: Brightness.dark,
-        //scaffoldBackgroundColor: Colors.white (default branco para todos os Containers dentro do Scaffold)
+        //scaffoldBackgroundColor: Colors.white 
+        //(default branco para todos os Containers dentro do Scaffold)
       ),
       home: LoginPage(),
     );
