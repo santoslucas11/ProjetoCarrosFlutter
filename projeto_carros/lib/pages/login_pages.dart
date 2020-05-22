@@ -1,10 +1,23 @@
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
 
   final _tLogin = TextEditingController();
+
   final _tSenha = TextEditingController();
+
+  final _focusSenha = FocusNode();
+
+  @override
+  void initState(){
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +40,14 @@ class LoginPage extends StatelessWidget {
               "Digite o login",
               controller: _tLogin,
               validator: _validateLogin,
+              keyboardType: TextInputType.emailAddress,
+              netxFocus: _focusSenha,
             ),
             SizedBox(height: 10),
-            _text( "Senha", "Digite a senha", password: true, controller: _tSenha, validator: _validateSenha,),
+            _text( "Senha", "Digite a senha", password: true, controller: _tSenha, validator: _validateSenha, keyboardType: TextInputType.number, focusNode: _focusSenha,),
             SizedBox(height: 20),
             _button("Entrar", _onClickLogin),
+            
           ],
         ),
       ),
@@ -88,11 +104,25 @@ class LoginPage extends StatelessWidget {
   _text(String label, String hint,
       {bool password = false,
       TextEditingController controller,
-      FormFieldValidator<String> validator}) {
+      FormFieldValidator<String> validator,
+      TextInputType keyboardType,
+      TextInputAction textInputAction,
+      FocusNode focusNode,
+      FocusNode netxFocus,
+      }) {
     return TextFormField(
       controller: controller,
       obscureText: password,
       validator: validator,
+      keyboardType: keyboardType,
+      keyboardAppearance: Brightness.dark,
+      textInputAction: textInputAction,
+      focusNode: focusNode,
+      onFieldSubmitted: (String text){
+        if(netxFocus != null){
+          FocusScope.of(context).requestFocus(_focusSenha);
+        }
+      },
       style: TextStyle(fontSize: 20, color: Colors.blue[300]),
       decoration: InputDecoration(
         labelText: label,
