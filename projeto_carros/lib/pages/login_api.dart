@@ -23,6 +23,14 @@ class LoginApi{
     print('Response status: ${response.statusCode}');
     print('Response body: ${response.body}');
 
+    Map mapResponse = json.decode(response.body);
+
+    String nome       = mapResponse["nome"];
+    String email      = mapResponse ["e-mail"];
+
+    print("Nome: $nome");
+    print("Email: $email");
+
   return true;
   }
 }
