@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_carros/widgets/app_button.dart';
+import 'package:projeto_carros/widgets/app_text.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -15,7 +17,7 @@ class _LoginPageState extends State<LoginPage> {
   final _focusSenha = FocusNode();
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
   }
 
@@ -35,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
         padding: EdgeInsets.all(16),
         child: ListView(
           children: <Widget>[
-            _text(
+            AppText(
               "Login",
               "Digite o login",
               controller: _tLogin,
@@ -44,17 +46,24 @@ class _LoginPageState extends State<LoginPage> {
               netxFocus: _focusSenha,
             ),
             SizedBox(height: 10),
-            _text( "Senha", "Digite a senha", password: true, controller: _tSenha, validator: _validateSenha, keyboardType: TextInputType.number, focusNode: _focusSenha,),
+            AppText(
+              "Senha",
+              "Digite a senha",
+              password: true,
+              controller: _tSenha,
+              validator: _validateSenha,
+              keyboardType: TextInputType.number,
+              focusNode: _focusSenha,
+            ),
             SizedBox(height: 20),
-            _button("Entrar", _onClickLogin),
-            
+            AppButton("Entrar", _onClickLogin),
           ],
         ),
       ),
     );
   }
 
-  String _validateLogin( String text) {
+  String _validateLogin(String text) {
     if (text.isEmpty) {
       return "Digite a login";
     } else {
@@ -62,12 +71,12 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
-  String _validateSenha( String text) {
+  String _validateSenha(String text) {
     if (text.isEmpty) {
       return "Digite a senha";
     }
 
-    if(text.length < 6){
+    if (text.length < 6) {
       return "A senha precisa ter pelo menos 6 caracteres";
     }
 
@@ -85,50 +94,5 @@ class _LoginPageState extends State<LoginPage> {
     String senha = _tSenha.text;
 
     print("Login: $login, Senha: $senha");
-  }
-
-  _button(String text, Function onPressed) {
-    return Container(
-      height: 46,
-      child: RaisedButton(
-        color: Colors.blue[300],
-        child: Text(
-          text,
-          style: TextStyle(color: Colors.white, fontSize: 20),
-        ),
-        onPressed: onPressed,
-      ),
-    );
-  }
-
-  _text(String label, String hint,
-      {bool password = false,
-      TextEditingController controller,
-      FormFieldValidator<String> validator,
-      TextInputType keyboardType,
-      TextInputAction textInputAction,
-      FocusNode focusNode,
-      FocusNode netxFocus,
-      }) {
-    return TextFormField(
-      controller: controller,
-      obscureText: password,
-      validator: validator,
-      keyboardType: keyboardType,
-      keyboardAppearance: Brightness.dark,
-      textInputAction: textInputAction,
-      focusNode: focusNode,
-      onFieldSubmitted: (String text){
-        if(netxFocus != null){
-          FocusScope.of(context).requestFocus(_focusSenha);
-        }
-      },
-      style: TextStyle(fontSize: 20, color: Colors.blue[300]),
-      decoration: InputDecoration(
-        labelText: label,
-        hintText: hint,
-        labelStyle: TextStyle(fontSize: 20, color: Colors.blue[300]),
-      ),
-    );
   }
 }
