@@ -5,20 +5,20 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("carros"),
+        title: Text("Carros"),
       ),
       body: _body(),
     );
   }
-}
 
-_body() {
-  return Center(
-    child: Text(
-      "Teste",
-      style: TextStyle(
-        fontSize: 22,
+  _body() {
+    return Center(
+      child: Text(
+        "Teste",
+        style: TextStyle(
+          fontSize: 22,
+        ),
       ),
-    ),
-  );
+    );
+  }
 }
