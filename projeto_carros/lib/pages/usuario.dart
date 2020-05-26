@@ -1,4 +1,3 @@
-
 class Usuario {
   String login;
   String nome;
@@ -8,12 +7,13 @@ class Usuario {
   List<String> roles;
 
   Usuario.fromJson(Map<String, dynamic> map)
-
-    : login      = map["login"],
-      nome       = map["nome"],
-      email      = map["e-mail"],
-      token      = map["token"];
-  
+      : login = map["login"],
+        nome = map["nome"],
+        email = map["e-mail"],
+        token = map["token"],
+        roles = map["roles"] != null
+            ? map["roles"].map<String>((role) => role.toString()).toList()
+            : null;
 
   @override
   String toString() {
