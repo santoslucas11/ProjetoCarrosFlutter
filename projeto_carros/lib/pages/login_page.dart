@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_carros/pages/api_response.dart';
 import 'package:projeto_carros/pages/home_page.dart';
 import 'package:projeto_carros/pages/login_api.dart';
 import 'package:projeto_carros/pages/usuario.dart';
+import 'package:projeto_carros/utils/alert.dart';
 import 'package:projeto_carros/utils/nav.dart';
 import 'package:projeto_carros/widgets/app_button.dart';
 import 'package:projeto_carros/widgets/app_text.dart';
@@ -99,13 +101,16 @@ class _LoginPageState extends State<LoginPage> {
 
     print("Login: $login, Senha: $senha");
 
-    Usuario user = await LoginApi.login(login, senha);
+    ApiResponse response = await LoginApi.login(login, senha);
 
-    if(user != null){
+    if(response.ok){
+
+      Usuario user =  response.result;
+
       print(">>> $user");
       push(context, HomePage());
     }else{
-      print("Erro!");
+      alert(context, response.msg);
     }
   }
 }
