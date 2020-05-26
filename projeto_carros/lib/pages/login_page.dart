@@ -22,6 +22,8 @@ class _LoginPageState extends State<LoginPage> {
 
   final _focusSenha = FocusNode();
 
+  bool _showProgress = true;
+
   @override
   void initState() {
     super.initState();
@@ -62,7 +64,11 @@ class _LoginPageState extends State<LoginPage> {
               focusNode: _focusSenha,
             ),
             SizedBox(height: 20),
-            AppButton("Entrar", _onClickLogin),
+            AppButton(
+              "Entrar", 
+              onPressed: _onClickLogin,
+              showProgress: _showProgress,
+              ),            
           ],
         ),
       ),
