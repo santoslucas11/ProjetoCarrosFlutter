@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_carros/carro/home_page.dart';
+import 'package:projeto_carros/login/login_api.dart';
+import 'package:projeto_carros/login/usuario.dart';
 import 'package:projeto_carros/pages/api_response.dart';
-import 'package:projeto_carros/pages/home_page.dart';
-import 'package:projeto_carros/pages/login_api.dart';
-import 'package:projeto_carros/pages/usuario.dart';
 import 'package:projeto_carros/utils/alert.dart';
 import 'package:projeto_carros/utils/nav.dart';
 import 'package:projeto_carros/widgets/app_button.dart';
