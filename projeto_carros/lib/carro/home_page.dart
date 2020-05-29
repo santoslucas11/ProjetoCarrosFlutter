@@ -48,17 +48,24 @@ class HomePage extends StatelessWidget {
                       "descrição...",
                       style: TextStyle(fontSize: 14),
                     ),
-                    ButtonBar(
-                      children: <Widget>[
-                        FlatButton(
-                          child: const Text('DETALHES'),
-                          onPressed: () {/* ... */},
-                        ),
-                        FlatButton(
-                          child: const Text('SHARE'),
-                          onPressed: () {/* ... */},
-                        ),
-                      ],
+                    ButtonBarTheme(
+                      data: ButtonBarTheme.of(context),
+                      child: ButtonBar(
+                        children: <Widget>[
+                          FlatButton(
+                            child: const Text('DETALHES'),
+                            onPressed: () {
+                              /* ... */
+                            },
+                          ),
+                          FlatButton(
+                            child: const Text('SHARE'),
+                            onPressed: () {
+                              /* ... */
+                            },
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
